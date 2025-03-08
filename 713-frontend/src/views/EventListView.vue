@@ -19,12 +19,12 @@ const props = defineProps<Props>()
 const page = computed(() => props.page)
 
 const hasNextPage = computed(() => {
-  const totalPages = Math.ceil(totalEvents.value / 2)
+  const totalPages = Math.ceil(totalEvents.value / 3)
   return page.value < totalPages
 })
 
 watchEffect(() => {
-  EventService.getEvents(page.value, 2)
+  EventService.getEvents(page.value, 3)
     .then((response) => {
       events.value = response.data
       totalEvents.value = response.headers['x-total-count']
@@ -37,7 +37,7 @@ watchEffect(() => {
   //   console.error('There was an error', error)
   // })
 })
-EventService.getEvents(page.value, 2).then((response) => {
+EventService.getEvents(page.value, 3).then((response) => {
   events.value = response.data
 })
 
