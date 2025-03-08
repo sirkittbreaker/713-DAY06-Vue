@@ -3,9 +3,9 @@ import { ref } from 'vue'
 import type { Event } from '@/types'
 import EventService from '@/services/EventService'
 const event = ref<Event>()
-const id = ref<number>(1)
-
-EventService.getEvent(id.value)
+const props = defineProps<{ id: string }>()
+const id = Number(props.id)
+EventService.getEvent(id)
   .then((response) => {
     event.value = response.data
   })
