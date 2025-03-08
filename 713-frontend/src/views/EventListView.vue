@@ -45,6 +45,8 @@ const events = ref([
 </script>
 
 <template>
+  <h1>Events For Good</h1>
+
   <div class="events">
     <!-- <div v-if="events.length === 0">No events</div>
     <div v-else-if="events.length === 1">Only one event</div>
