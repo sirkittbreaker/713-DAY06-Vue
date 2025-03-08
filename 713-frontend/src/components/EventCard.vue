@@ -5,7 +5,6 @@ defineProps<{ event: Event }>()
 
 <template>
   <div class="event-class">
-    <h1>This is an {{ event.title }} page</h1>
     <div class="event-card">
       <h2>{{ event.title }}</h2>
       <p>{{ event.description }}</p>
