@@ -32,6 +32,7 @@ watchEffect(() => {
     .catch(() => {
       router.push({ name: 'network-error-view' })
     })
+
   // .catch((error) => {
   //   console.error('There was an error', error)
   // })
