@@ -3,6 +3,7 @@ import { ref, computed, watchEffect } from 'vue'
 import EventCard from '@/components/EventCard.vue'
 import EventService from '@/services/EventService'
 import type { Event } from '@/types'
+import { useRouter } from 'vue-router'
 
 interface EventResponse {
   data: Event[]
@@ -11,6 +12,7 @@ interface Props {
   page: number
 }
 
+const router = useRouter()
 const events = ref<Event[]>([])
 const totalEvents = ref(0)
 const props = defineProps<Props>()
@@ -27,9 +29,12 @@ watchEffect(() => {
       events.value = response.data
       totalEvents.value = response.headers['x-total-count']
     })
-    .catch((error) => {
-      console.error('There was an error', error)
+    .catch(() => {
+      router.push({ name: 'network-error-view' })
     })
+  // .catch((error) => {
+  //   console.error('There was an error', error)
+  // })
 })
 EventService.getEvents(page.value, 2).then((response) => {
   events.value = response.data
