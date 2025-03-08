@@ -1,8 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Event } from '@/types'
+defineProps<{ event: Event }>()
+</script>
 
 <template>
-  <div class="event-card">
-    <h1>This is an event page</h1>
+  <div class="event-class">
+    <h1>This is an {{ event.title }} page</h1>
+    <div class="event-card">
+      <h2>{{ event.title }}</h2>
+      <p>{{ event.description }}</p>
+      <span>@{{ event.time }} on {{ event.date }}</span>
+    </div>
   </div>
 </template>
 
