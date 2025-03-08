@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="event-card">
+  <div class="event-class">
     <h1>This is an event page</h1>
   </div>
 </template>
