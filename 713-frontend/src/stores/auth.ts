@@ -1,14 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import type { AxiosInstance } from 'axios'
-const apiClient: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-})
+import apiClient from '@/services/AxiosClient'
+
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     token: null as string | null,
@@ -20,6 +13,7 @@ export const useAuthStore = defineStore('auth', {
         password: password,
       })
       this.token = response.data.access_token
+      localStorage.setItem('token', this.token as string)
       return response
     },
   },
